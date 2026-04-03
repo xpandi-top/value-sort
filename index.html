@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Value Journal</title>
+    <meta
+      name="description"
+      content="A focused value sorting experience for finding what matters most right now."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="language-switcher">
+        <button class="ghost-button language-button active" id="lang-en-button" type="button">
+          English
+        </button>
+        <button class="ghost-button language-button" id="lang-zh-button" type="button">
+          中文
+        </button>
+      </div>
+
+      <section class="screen landing-screen" id="landing-screen">
+        <p class="eyebrow" id="landing-eyebrow">Value Journal</p>
+        <h1 id="landing-title">Discover what truly matters to you.</h1>
+        <button class="primary-button hero-button" id="start-button" type="button">
+          Start
+        </button>
+      </section>
+
+      <section class="screen app-screen hidden" id="app-screen">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow" id="stage-label">Value Sort</p>
+            <h2 id="group-title">Choose the one that resonates more right now.</h2>
+          </div>
+          <div class="header-actions">
+            <button class="ghost-button" id="show-all-button" type="button">Show all values</button>
+            <button class="ghost-button" id="restart-button" type="button">Restart</button>
+          </div>
+        </header>
+
+        <section class="status-panel">
+          <span class="status-chip accent" id="progress-chip">24 active, 0 in the pool</span>
+        </section>
+
+        <section class="round-panel hidden" id="round-panel">
+          <div class="focus-card">
+            <p class="section-label" id="round-label">Round complete</p>
+            <h3 id="round-preview">You have selected 8 values.</h3>
+            <p class="focus-copy" id="round-note">
+              Take a moment to think, then find the more important one.
+            </p>
+            <div class="round-values-list" id="round-values-list"></div>
+            <div class="round-actions">
+              <button class="primary-button" id="round-continue-button" type="button">
+                Move on
+              </button>
+              <button class="ghost-button" id="round-restart-button" type="button">
+                Restart
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="compare-layout" id="compare-layout">
+          <div class="compare-panel">
+            <button class="value-card" id="option-left" type="button"></button>
+            <div class="compare-actions">
+              <span class="versus" id="versus-label">or</span>
+              <button class="ghost-button compare-button compare-button-both" id="withhold-button" type="button">
+                Both matter
+              </button>
+              <button class="ghost-button compare-button compare-button-neither" id="discard-button" type="button">
+                Neither matters
+              </button>
+            </div>
+            <button class="value-card" id="option-right" type="button"></button>
+          </div>
+
+          <aside class="pool-panel">
+            <p class="section-label" id="pool-label">Important values pool</p>
+            <div class="pool-list" id="important-pool"></div>
+          </aside>
+        </section>
+      </section>
+
+      <section class="screen final-screen hidden" id="final-screen">
+        <p class="eyebrow" id="final-eyebrow">Your Value</p>
+        <h1 class="final-word" id="final-word"></h1>
+        <p class="final-summary" id="final-summary"></p>
+        <div class="meaning-box hidden" id="empty-state-box">
+          <p class="section-label" id="empty-label">No value selected</p>
+          <p class="final-summary" id="empty-summary">
+            Maybe restart, or provide your own value set if these words do not fit what matters to you right now.
+          </p>
+          <div class="round-actions">
+            <button class="primary-button" id="empty-restart-button" type="button">Restart</button>
+            <button class="ghost-button" id="empty-custom-button" type="button">Use your own values</button>
+          </div>
+        </div>
+        <div class="meaning-box">
+          <label class="field-label" for="meaning-input" id="meaning-label">What does it mean to you?</label>
+          <textarea id="meaning-input" class="meaning-input" rows="4" placeholder="Write a few words or a short sentence."></textarea>
+          <button class="primary-button" id="generate-button" type="button">
+            Generate your Reflection Card and Visualization Prompt
+          </button>
+        </div>
+      </section>
+
+      <section class="screen final-screen hidden" id="generated-screen">
+        <p class="eyebrow" id="generated-eyebrow">Generated</p>
+        <h1 id="generated-title">Reflection Card and Visualization Prompt</h1>
+        <div class="generated-layout">
+          <article class="reflection-card" id="share-card"></article>
+          <article class="prompt-card">
+            <p class="section-label" id="prompt-label">Visualization prompt</p>
+            <pre class="prompt-output" id="image-prompt-output"></pre>
+            <button class="ghost-button" id="copy-prompt-button" type="button">Copy prompt</button>
+          </article>
+        </div>
+        <div class="share-actions">
+          <button class="primary-button" id="share-image-button" type="button">Share card as image</button>
+          <button class="ghost-button" id="back-to-reflection-button" type="button">Back to reflection</button>
+        </div>
+
+        <section class="history-panel">
+          <div class="history-toolbar">
+            <button class="ghost-button" id="toggle-history-button" type="button">Show selection history</button>
+            <button class="ghost-button" id="share-history-button" type="button">Copy or share history</button>
+          </div>
+          <div class="history-log hidden" id="history-log"></div>
+        </section>
+      </section>
+    </div>
+
+    <aside class="side-panel hidden" id="all-values-panel">
+      <div class="side-panel-header">
+        <div>
+          <p class="eyebrow" id="overview-eyebrow">Overview</p>
+          <h2 id="overview-title">All values</h2>
+        </div>
+        <button class="ghost-button" id="close-all-button" type="button">Close</button>
+      </div>
+      <div class="all-values-grid" id="all-values-grid"></div>
+    </aside>
+
+    <script defer src="./script.js"></script>
+  </body>
+</html>
